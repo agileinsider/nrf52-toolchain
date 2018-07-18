@@ -9,6 +9,8 @@ LABEL \
 RUN apt-get update && apt-get install -y \
   unzip \
   vim \
+  python \
+  python-pip \
   && apt-get purge
 
 WORKDIR /usr/local
@@ -41,6 +43,7 @@ ENV \
 
 COPY Makefile.posix /usr/share/nRF5-SDK/nRF5_SDK_15.0.0_a53641a/components/toolchain/gcc/Makefile.posix
 
+# Include nrfutil
+RUN pip install nrfutil
+
 WORKDIR /build
-
-
